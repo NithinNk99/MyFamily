@@ -1,8 +1,10 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:myfamily/screens/loginPage.dart';
 
 import '../screens/mainPage.dart';
+import '../screens/signupPage.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);
@@ -17,14 +19,17 @@ class _SplashScreenState extends State<SplashScreen> {
     super.initState();
     Timer(
         Duration(seconds: 5),
-        () => Navigator.pushReplacement(
-            context, MaterialPageRoute(builder: (context) => MainPage())));
+        () => Navigator.pushReplacement(context,
+            MaterialPageRoute(builder: (context) =>   Loginpage())));
   }
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: Text('Hello world'),
+      color: Colors.white,
+      child: Image.asset(
+        "assets/family.logo.gif",
+      ),
     );
   }
 }

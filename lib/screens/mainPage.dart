@@ -1,19 +1,18 @@
 import 'package:flutter/material.dart';
 
-class MainPage extends StatefulWidget {
-  const MainPage({ Key? key }) : super(key: key);
+class MainPage extends StatelessWidget {
+  MainPage({Key? key, required this.data}) : super(key: key);
 
-  @override
-  State<MainPage> createState() => _MainPageState();
-}
+  dynamic data;
 
-class _MainPageState extends State<MainPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Main Page'),
-      ),
+      appBar: AppBar(),
+      body: Center(child: Text("Hello " + data['name'])),
     );
   }
+
+  // State<LoginScreen> createState() => _LoginScreenState();
+
 }
