@@ -10,8 +10,8 @@ class SigupPage extends StatefulWidget {
   State<SigupPage> createState() => _SigupPageState();
 }
 
-final _formKey = GlobalKey<FormState>();
-var confirmPassword;
+final signInglobalKey = GlobalKey<FormState>();
+dynamic confirmPassword;
 
 saveDataToDb() {
   Login login = Login();
@@ -23,7 +23,7 @@ saveDataToDb() {
   LoginService().saveLogin(login);
 }
 
-clear() {
+clearText() {
   nameCtl.text = '';
   emailCtl.text = '';
   ageCtl.text = '';
@@ -43,7 +43,7 @@ class _SigupPageState extends State<SigupPage> {
     return Scaffold(
       body: Center(
         child: Form(
-          key: _formKey,
+          key: signInglobalKey,
           child: SingleChildScrollView(
             child: Container(
               color: Color.fromARGB(255, 253, 249, 234),
@@ -198,10 +198,10 @@ class _SigupPageState extends State<SigupPage> {
                           ),
                           TextButton(
                               onPressed: () {
-                                Navigator.push(
+                                Navigator.pop(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => const Loginpage()),
+                                      builder: (context) =>   Loginpage()),
                                 );
                               },
                               child: const Text(
@@ -214,14 +214,14 @@ class _SigupPageState extends State<SigupPage> {
                           onPressed: () {}, child: Text('Forget password')),
                       ElevatedButton(
                           onPressed: () {
-                            if (_formKey.currentState!.validate()) {
+                            if (signInglobalKey.currentState!.validate()) {
                               saveDataToDb();
-                              Navigator.push(
+                              Navigator.pop(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (_) => const Loginpage()));
+                                      builder: (_) =>   Loginpage()));
+                              clearText();
                             }
-                            clear();
                           },
                           child: Text('Sign up'))
                     ]),

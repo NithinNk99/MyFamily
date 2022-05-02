@@ -5,13 +5,13 @@ import '../localDatabase/serviceFile.dart';
 import 'signupPage.dart';
 
 class Loginpage extends StatefulWidget {
-  const Loginpage({Key? key}) : super(key: key);
+  Loginpage({Key? key}) : super(key: key);
 
   @override
   State<Loginpage> createState() => _LoginpageState();
 }
 
-final _formKey = GlobalKey<FormState>();
+final loginGlobalKey = GlobalKey<FormState>();
 TextEditingController emailCtl = TextEditingController();
 TextEditingController passCtl = TextEditingController();
 
@@ -21,7 +21,7 @@ class _LoginpageState extends State<Loginpage> {
     return Scaffold(
       body: Center(
         child: Form(
-          key: _formKey,
+          key: loginGlobalKey,
           child: SingleChildScrollView(
             child: Container(
               color: Color.fromARGB(255, 253, 249, 234),
@@ -126,7 +126,7 @@ class _LoginpageState extends State<Loginpage> {
                           child: const Text('Forget password')),
                       ElevatedButton(
                           onPressed: () async {
-                            if (_formKey.currentState!.validate()) {
+                            if (loginGlobalKey.currentState!.validate()) {
                               var value = await LoginService()
                                   .checkValidUser(emailCtl.text, passCtl.text);
 
